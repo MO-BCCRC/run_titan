@@ -32,6 +32,7 @@ input_params = {'id':'__REQUIRED__',
                 'genome_type': '__REQUIRED__',
                 'chromosomes': None,
                 'y_threshold': '20',
+                'max_depth':'200',
                 }
 
 return_value = []

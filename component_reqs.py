@@ -15,7 +15,7 @@ memory = '25G'
 
 version = '1.1.5'
 
-seed_version = '0.1.3'
+seed_version = '0.1.4'
 
 requirements = {'R':'R',
                 'Rscript':'Rscript'}

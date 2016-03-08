@@ -29,6 +29,7 @@ outobj <- args[22]
 genometype <- args[23]
 chrom <- args[24]
 yThreshold <- as.numeric(args[25])
+maxDep <- as.numeric(args[26])
 chrom <- eval(parse(text=chrom)) 
 
 message('Running TITAN...')
@@ -56,12 +57,25 @@ rm(logR,cnData)
 mScore <- as.data.frame(wigToRangedData(map))
 mScore <- getPositionOverlap(data$chr,data$posn,mScore[,-4])
 
+#### Check if Chromosomes Have been provided
+
+if (is.null(chrom)) {
+chrom <- unique(sort(data$chr))
+}
 
 # check if sample is Female or number of datapoints is very small.
-if (NROW(filterData(data,c('Y'),minDepth=10,maxDepth=200,map=mScore,mapThres=0.8)) > yThreshold){
-data <- filterData(data,chrom,minDepth=10,maxDepth=200,map=mScore,mapThres=0.8)
-} else {
-data <- filterData(data,chrom[which(chrom!='Y')],minDepth=10,maxDepth=200,map=mScore,mapThres=0.8)
+if (genometype=='UCSC'){
+    if (NROW(filterData(data,c('chrY'),minDepth=10,maxDepth=maxDep,map=mScore,mapThres=0.8)) > yThreshold){
+        data <- filterData(data,chrom,minDepth=10,maxDepth=maxDep,map=mScore,mapThres=0.8)
+    } else {
+        data <- filterData(data,chrom[which(chrom!='chrY')],minDepth=10,maxDepth=maxDep,map=mScore,mapThres=0.8)
+    }
+} else{
+    if (NROW(filterData(data,c('Y'),minDepth=10,maxDepth=maxDep,map=mScore,mapThres=0.8)) > yThreshold){
+        data <- filterData(data,chrom,minDepth=10,maxDepth=maxDep,map=mScore,mapThres=0.8)
+    } else {
+        data <- filterData(data,chrom[which(chrom!='Y')],minDepth=10,maxDepth=maxDep,map=mScore,mapThres=0.8)
+    }
 }
 
 #### MODEL SELECTION USING EM (FWD-BACK) TO SELECT NUMBER OF CLUSTERS ####
