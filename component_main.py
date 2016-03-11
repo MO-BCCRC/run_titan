@@ -50,7 +50,7 @@ class Component(ComponentAbstract):
                     self.args.txn_exp_len, self.args.txn_z_strength, self.args.alpha_k,
                     self.args.alpha_high,self.args.maxcn,self.args.sym,
                     self.args.obj_outfile, self.args.genome_type, chr,
-                    self.args.y_threshold]
+                    self.args.y_threshold, self.args.max_depth]
 
         return cmd,cmd_args
 
