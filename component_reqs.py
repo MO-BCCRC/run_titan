@@ -13,7 +13,7 @@ interval_file = None
 
 memory = '25G'
 
-version = '1.1.5'
+version = '1.1.6'
 
 seed_version = '0.1.4'
 
