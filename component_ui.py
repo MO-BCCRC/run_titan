@@ -14,10 +14,6 @@ __version__ = 'titan_runner_v0.1'
 parser = argparse.ArgumentParser(prog='''TITAN''',
                                  description = '''Run TITAN ''')
 
-parser.add_argument("--id", 
-                    required = True, 
-                    help= '''the sample id ''')
-
 parser.add_argument("--infile", 
                     required = True, 
                     help="input file with list of all sites")
@@ -30,17 +26,6 @@ parser.add_argument("--map",
                     required = True, 
                     help="specify the path to map wig file")
 
-parser.add_argument("--num_clusters", 
-                    default='1', 
-                    help="number of clonal clusters")
-
-parser.add_argument("--num_cores", 
-                    default='4', 
-                    help="Specify the Number of cores to be used")
-
-parser.add_argument("--ploidy", 
-                    default = '2',
-                    help="specify the ploidy value")
 
 parser.add_argument("--outfile", 
                     required = True,
@@ -54,25 +39,42 @@ parser.add_argument("--outparam",
                     required = True,  
                     help="path to file with all the required parameters ")
 
+parser.add_argument("--id", 
+                    required = True, 
+                    help= '''the sample id ''')
+
+parser.add_argument("--num_clusters", 
+                    default='1', 
+                    help="number of clonal clusters")
+
+parser.add_argument("--num_cores", 
+                    default='4', 
+                    help="Specify the Number of cores to be used")
+
+parser.add_argument("--ploidy", 
+                    default = '2',
+                    help="specify the ploidy value")
+
+
 parser.add_argument("--myskew", 
                     default = '0',  
                     help=" skew parameter for titan")
 
-parser.add_argument("--bool_est_ploidy", 
+parser.add_argument("--estimate_ploidy", 
                     default = 'TRUE',  
                     help="logical indicating whether to estimate and account for tumour ploidy ")
 
-parser.add_argument("--n_zero", 
+parser.add_argument("--normal_param_nzero", 
                     required = True,  
                     help=" n_zero ")
 
-parser.add_argument("--norm_est_meth", 
+parser.add_argument("--normal_estimate_method", 
                     default = 'map',  
                     help='''specifies how to handle normal proportion estimation. To estimate,
                          use map which is maximum a posteriori. If you wish to not estimate
                          this parameter, then use fixed ''')
 
-parser.add_argument("--max_i", 
+parser.add_argument("--max_iters", 
                     default = '5', 
                     help="maximum number of EM iterations allowed ")
 
@@ -100,12 +102,27 @@ parser.add_argument("--alpha_high",
                     default='20000',  
                     help="alpha_high")
 
-parser.add_argument("--maxcn",
+parser.add_argument("--max_copynumber",
                     default = '8',
                     help = "maxcn")
 
-parser.add_argument("--sym",
+parser.add_argument("--symmetric",
                     default = 'TRUE',
                     help = 'sym')
+
+parser.add_argument("--genome_type",
+                    help = 'genome_type: NCBI or UCSC')
+
+parser.add_argument("--chromosomes",
+                    nargs = '*',
+                    help = 'target chromosomes')
+
+parser.add_argument("--y_threshold",
+                    help = 'y_threshold')
+
+parser.add_argument("--max_depth",
+                    default = 1000,
+                    type=str,
+                    help = 'max depth of bam')
 
 args, unknown = parser.parse_known_args()

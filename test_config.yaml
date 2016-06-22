@@ -27,7 +27,7 @@ make_cmd_tests:
       txn_exp_len: 1e9
       txn_z_strength: 1e9
       y_threshold: '20'
-    chunk: 'null'
+    chunk: null
     output:
       cmd: Rscript component_seed/titan.R
       cmd_args:
