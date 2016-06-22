@@ -10,7 +10,7 @@ Input        : counts, corrected wig, mappability wig
 Output       : titan output, titan parameters, R object containing data required for plotting
 Parameters   : sample id, number of clusters (varies from 1 to 10), number of cores for multicore processing, ploidy,skew, estimate ploidy flag, n_zero, norm_est_meth, max_i, pseudo_counts, txn_exp_len, txn_z_strength, alpha_k, alpha_high, maxcn, sym
 Seed used    : titan.R
-
+version: 1.1.7-0.1.4
 ```
 
 ###Dependencies
@@ -25,3 +25,7 @@ Seed used    : titan.R
 
 ###Last updates
 
+
+
+### ChangeLog
+* 1.1.7-0.1.4: added test config

@@ -15,7 +15,7 @@ import os
 class Component(ComponentAbstract):
 
     def __init__(self,component_name='run_titan', component_parent_dir=None, seed_dir=None):
-        self.version = '1.1.5'
+        self.version = '1.1.7'
         ## initialize ComponentAbstract
         super(Component, self).__init__(component_name, component_parent_dir, seed_dir)
 
